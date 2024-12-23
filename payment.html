@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="styles/buy.css">
+</head>
+<body>
+    <header>
+        <h1>Payment Options</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section class="purchase-details">
+            <div class="purchase-info">
+                <h2>Select Payment Method</h2>
+                <form id="paymentForm">
+                    <p>
+                        <input type="radio" id="paypal" name="paymentMethod" value="PayPal" required>
+                        <label for="paypal">PayPal</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="creditCard" name="paymentMethod" value="Credit Card">
+                        <label for="creditCard">Credit Card (Visa, Mastercard, Rupay)</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="upi" name="paymentMethod" value="UPI">
+                        <label for="upi">UPI</label>
+                    </p>
+                    <p>
+                        <input type="radio" id="cod" name="paymentMethod" value="Cash on Delivery">
+                        <label for="cod">Cash on Delivery</label>
+                    </p>
+                    <button type="submit" id="placeMyOrderBtn">Place My Order</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 ShopEasy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Place My Order button functionality
+        document.getElementById("paymentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            if (!selectedPaymentMethod) {
+                alert("Please select a payment method.");
+                return;
+            }
+
+            alert("Order placed successfully with " + selectedPaymentMethod.value + "!");
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

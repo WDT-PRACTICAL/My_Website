@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Page</title>
+    <link rel="stylesheet" href="styles/buy.css">
+</head>
+<body>
+    <header>
+        <h1>Purchase Details</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section class="purchase-details">
+            <div class="purchase-info">
+                <h2>Order Summary</h2>
+                <p>Product Name: <span id="productName">Dell Inspiron</span></p>
+                <p>
+                    Quantity: 
+                    <button id="decreaseQuantity">-</button>
+                    <span id="quantity">1</span>
+                    <button id="increaseQuantity">+</button>
+                </p>
+                <p>Price per Unit: <span id="unitPrice">₹50,000</span></p>
+                <p>Total Price: <span id="totalPrice">₹50,000</span></p>
+                <button id="placeOrderBtn">Make Payment</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 ShopEasy. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        const unitPrice = 50000; 
+        const quantityElement = document.getElementById("quantity");
+        const totalPriceElement = document.getElementById("totalPrice");
+
+      
+        function updateTotalPrice(quantity) {
+            totalPriceElement.textContent = `₹${unitPrice * quantity}`;
+        }
+
+       
+        document.getElementById("increaseQuantity").addEventListener("click", function() {
+            let quantity = parseInt(quantityElement.textContent);
+            quantity++;
+            quantityElement.textContent = quantity;
+            updateTotalPrice(quantity);
+        });
+
+        document.getElementById("decreaseQuantity").addEventListener("click", function() {
+            let quantity = parseInt(quantityElement.textContent);
+            if (quantity > 1) {
+                quantity--;
+                quantityElement.textContent = quantity;
+                updateTotalPrice(quantity);
+            }
+        });
+
+        // Place order button
+        document.getElementById("placeOrderBtn").addEventListener("click", function() {
+            alert("Redirecting For Making Payment!");
+            window.location.href = 'payment.html';
+        });
+    </script>
+</body>
+</html>
