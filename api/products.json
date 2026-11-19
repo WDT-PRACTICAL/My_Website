@@ -1,0 +1,52 @@
+[
+  {
+    "id": "dell",
+    "name": "Dell Inspiron",
+    "price": 50000,
+    "currency": "INR",
+    "rating": 4,
+    "image": "images/dell.jpg",
+    "page": "dell.html",
+    "description": "Great performance laptop for daily use."
+  },
+  {
+    "id": "lenovo",
+    "name": "Lenovo ThinkPad",
+    "price": 60000,
+    "currency": "INR",
+    "rating": 4,
+    "image": "images/lenovo.jpg",
+    "page": "lenovo.html",
+    "description": "Reliable and durable, ideal for professionals."
+  },
+  {
+    "id": "asus",
+    "name": "Asus ZenBook",
+    "price": 70000,
+    "currency": "INR",
+    "rating": 4,
+    "image": "images/asus.jpg",
+    "page": "asus.html",
+    "description": "Sleek design with powerful performance."
+  },
+  {
+    "id": "vivo",
+    "name": "VivoBook",
+    "price": 55000,
+    "currency": "INR",
+    "rating": 4,
+    "image": "images/vivo.jpg",
+    "page": "vivo.html",
+    "description": "Stylish and lightweight, perfect for students."
+  },
+  {
+    "id": "rog",
+    "name": "MSI Gaming",
+    "price": 120000,
+    "currency": "INR",
+    "rating": 5,
+    "image": "images/rog.jpg",
+    "page": "rog.html",
+    "description": "Ultimate gaming experience with top-notch graphics."
+  }
+]

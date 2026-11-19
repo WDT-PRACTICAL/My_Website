@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="styles/products.css">
+</head>
+<body>
+    <header>
+        <h1>Our Laptops</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section class="products" id="productGrid">
+            <p class="status" id="status">Loading products&hellip;</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 ShopEasy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const grid = document.getElementById('productGrid');
+        const statusElement = document.getElementById('status');
+
+        const priceFormatter = new Intl.NumberFormat('en-IN', {
+            style: 'currency',
+            currency: 'INR',
+            maximumFractionDigits: 0
+        });
+
+        function stars(rating) {
+            return '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
+        }
+
+        function productCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <a href="${product.page}">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>Price: ${priceFormatter.format(product.price)}</p>
+                        <p>Rating: ${stars(product.rating)}</p>
+                        <p>${product.description}</p>
+                    </div>
+                </a>`;
+            return card;
+        }
+
+        async function loadProducts() {
+            try {
+                const response = await fetch('/api/products');
+                if (!response.ok) {
+                    throw new Error(`API responded with ${response.status}`);
+                }
+                const { products } = await response.json();
+
+                statusElement.remove();
+                products.forEach((product) => grid.appendChild(productCard(product)));
+            } catch (error) {
+                statusElement.textContent = 'Sorry, products could not be loaded right now.';
+                statusElement.classList.add('status--error');
+            }
+        }
+
+        loadProducts();
+    </script>
+</body>
+</html>
