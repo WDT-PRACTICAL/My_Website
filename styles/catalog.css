@@ -1,0 +1,257 @@
+/* DayTech — Warm Catalog theme. Loaded after each page's own stylesheet. */
+
+:root {
+    --cream: #F6F1E7;
+    --paper: #FFFDF8;
+    --ink: #1E1B16;
+    --terracotta: #B4552D;
+    --muted: #8A8478;
+    --rule: rgba(30, 27, 22, 0.18);
+}
+
+body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Masthead: centered title under a double hairline rule */
+header {
+    background: transparent;
+    color: var(--ink);
+    text-align: center;
+    padding: 2.75rem 1.5rem 1.4rem;
+    border-bottom: 1px solid var(--ink);
+    box-shadow: 0 5px 0 -4px var(--ink);
+}
+
+header h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    margin: 0 0 1.1rem;
+}
+
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.75rem;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.76rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+header a {
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+header nav a {
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+}
+
+header nav a:hover {
+    color: var(--terracotta);
+    border-color: var(--terracotta);
+    text-decoration: none;
+}
+
+.site-logo {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 1.25rem;
+    border: 1px solid var(--rule);
+}
+
+h2,
+h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+}
+
+a {
+    color: var(--terracotta);
+}
+
+/* Home hero: dark product plate under a scrim so the copy stays readable */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    color: var(--cream);
+    background:
+        linear-gradient(rgba(10, 11, 14, 0.78), rgba(10, 11, 14, 0.78)),
+        url("https://media.base44.com/images/public/6aba9890bc06830fa7fa9dac/44f57f410_generated_13072796.png")
+        no-repeat center / cover;
+    border-bottom: 1px solid var(--ink);
+}
+
+.hero h2 {
+    color: var(--cream);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 0.6rem 0 0.4rem;
+}
+
+.hero p {
+    color: #D8C7AC;
+    font-size: 1.05rem;
+    margin: 0.3rem 0;
+}
+
+.hero input {
+    width: min(520px, 85%);
+    padding: 0.7rem 1rem;
+    border: 1px solid rgba(30, 27, 22, 0.3);
+    border-radius: 2px;
+    background: rgba(246, 241, 231, 0.95);
+    font: inherit;
+    color: var(--ink);
+}
+
+/* Home product plates */
+.products {
+    max-width: 1120px;
+    margin: 0 auto;
+    gap: 1.5rem;
+    padding: 2.5rem 1.5rem;
+}
+
+.products .product-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    box-shadow: none;
+    padding: 1.1rem;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.products .product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink);
+}
+
+.products .product-card a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.products .product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 2px;
+    background: #EDE6D8;
+}
+
+.products .product-card h3 {
+    font-size: 1.25rem;
+    margin: 0.75rem 0 0.35rem;
+}
+
+.products .product-card p {
+    color: #4A453D;
+    font-size: 0.95rem;
+}
+
+/* Forms and content panels */
+.login-form,
+.registration-form,
+.contact-form,
+.about,
+.purchase-details,
+.product-details {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    box-shadow: none;
+}
+
+.login-form,
+.registration-form {
+    padding: 2.5rem 2rem;
+}
+
+.login-form input,
+.registration-form input,
+.contact-form input,
+.contact-form textarea {
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: #fff;
+    padding: 0.6rem 0.7rem;
+    font: inherit;
+    color: var(--ink);
+}
+
+.login-form button,
+.registration-form button,
+.contact-form button,
+.purchase-details button,
+.product-details .product-info button {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    border-radius: 2px;
+    font: inherit;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-form button:hover,
+.registration-form button:hover,
+.contact-form button:hover,
+.purchase-details button:hover,
+.product-details .product-info button:hover {
+    background: var(--terracotta);
+}
+
+.login-form a,
+.registration-form a {
+    color: var(--terracotta);
+    text-decoration: none;
+}
+
+.login-form a:hover,
+.registration-form a:hover {
+    text-decoration: underline;
+}
+
+.product-details .product-image img {
+    border-radius: 2px;
+    background: #EDE6D8;
+}
+
+.product-details .product-info button a {
+    color: var(--cream);
+    text-decoration: none;
+}
+
+footer {
+    background: transparent;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    padding: 1.75rem 1.5rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    position: static;
+    width: auto;
+    bottom: auto;
+}
+
+footer p {
+    margin: 0;
+}

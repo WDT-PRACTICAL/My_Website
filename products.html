@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
     <link rel="stylesheet" href="styles/products.css">
+    <link rel="stylesheet" href="styles/catalog.css">
 </head>
 <body>
     <header>
@@ -18,7 +19,19 @@
         </nav>
     </header>
     <main>
-        <section class="products" id="productGrid">
+        <figure class="catalog-cover">
+            <img src="https://media.base44.com/images/public/6aba9890bc06830fa7fa9dac/44f57f410_generated_13072796.png"
+                 alt="MSI gaming laptop lit on a dark surface">
+            <figcaption>Featured machine &middot; MSI Gaming</figcaption>
+        </figure>
+
+        <section class="catalog" id="catalog">
+            <div class="catalog-head">
+                <span>No.</span>
+                <span>Model</span>
+                <span>Notes</span>
+                <span>Price</span>
+            </div>
             <p class="status" id="status">Loading products&hellip;</p>
         </section>
     </main>
@@ -27,7 +40,7 @@
     </footer>
 
     <script>
-        const grid = document.getElementById('productGrid');
+        const catalog = document.getElementById('catalog');
         const statusElement = document.getElementById('status');
 
         const priceFormatter = new Intl.NumberFormat('en-IN', {
@@ -40,20 +53,20 @@
             return '★'.repeat(rating) + '☆'.repeat(Math.max(0, 5 - rating));
         }
 
-        function productCard(product) {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.innerHTML = `
+        function catalogRow(product, index) {
+            const row = document.createElement('article');
+            row.className = 'catalog-row';
+            row.innerHTML = `
                 <a href="${product.page}">
-                    <img src="${product.image}" alt="${product.name}">
-                    <div class="product-info">
-                        <h3>${product.name}</h3>
-                        <p>Price: ${priceFormatter.format(product.price)}</p>
-                        <p>Rating: ${stars(product.rating)}</p>
-                        <p>${product.description}</p>
-                    </div>
+                    <span class="row-index">${String(index + 1).padStart(2, '0')}</span>
+                    <span class="row-name">${product.name}</span>
+                    <span class="row-spec">${product.description}
+                        <span class="row-rating">${stars(product.rating)}</span>
+                    </span>
+                    <span class="row-price">${priceFormatter.format(product.price)}</span>
                 </a>`;
-            return card;
+            row.querySelector('a').style.animationDelay = `${index * 70}ms`;
+            return row;
         }
 
         async function loadProducts() {
@@ -65,7 +78,7 @@
                 const { products } = await response.json();
 
                 statusElement.remove();
-                products.forEach((product) => grid.appendChild(productCard(product)));
+                products.forEach((product, index) => catalog.appendChild(catalogRow(product, index)));
             } catch (error) {
                 statusElement.textContent = 'Sorry, products could not be loaded right now.';
                 statusElement.classList.add('status--error');

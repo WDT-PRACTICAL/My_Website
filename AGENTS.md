@@ -18,5 +18,7 @@ DayTech is a static HTML website (laptop store) with no build step, no backend, 
 - `products.html` renders its cards client-side from `GET /api/products`; if it shows "Sorry, products could not be loaded", check the `api` service health and that nginx is proxying `/api/`.
 
 ## Notes
+- Visual theme: `styles/catalog.css` ("Warm Catalog") is loaded AFTER each page's own stylesheet on every page and overrides the shared chrome (cream/ink/terracotta palette, serif masthead, small-caps nav, footers, form panels). Page-specific layout lives in the per-page CSS files; `styles/products.css` holds the products page's catalog rows.
+- The MSI Gaming imagery (home card, `rog.html`, products page cover, home hero background) uses the generated asset at `https://media.base44.com/images/public/6aba9890bc06830fa7fa9dac/44f57f410_generated_13072796.png`; the other brand photos are still the original local files in `images/`.
 - The repo root directory permissions must be world-readable (755) for nginx to serve files. If a 403 Forbidden appears, run `chmod 755 . && chmod -R a+rX .`.
 - No external services or credentials are required.
